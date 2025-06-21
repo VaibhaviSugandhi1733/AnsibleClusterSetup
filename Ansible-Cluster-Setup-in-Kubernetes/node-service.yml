@@ -1,0 +1,14 @@
+# node-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-service
+spec:
+  selector:
+    role: node
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
+  type: ClusterIP  
+

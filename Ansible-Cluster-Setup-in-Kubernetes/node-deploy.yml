@@ -1,0 +1,21 @@
+# node-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ansible-nodes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: node
+  template:
+    metadata:
+      labels:
+        role: node
+    spec:
+      containers:
+      - name: node
+        image: vaibhavisugandhi1733/ansible-node-img:latest
+        ports:
+        - containerPort: 22
+

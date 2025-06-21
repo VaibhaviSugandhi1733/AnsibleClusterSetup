@@ -1,0 +1,28 @@
+FROM ubuntu:20.04
+
+# Avoid user prompt
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update and install dependencies
+RUN apt update && apt install -y software-properties-common openssh-server sudo sshpass curl gnupg2
+
+# Install Ansible
+RUN add-apt-repository --yes --update ppa:ansible/ansible && \
+    apt update && apt install -y ansible
+
+# Create ansible user with password and sudo rights
+RUN useradd -m ansible && echo "ansible:ansible" | chpasswd && adduser ansible sudo && \
+    echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# SSH config fixes
+RUN mkdir /var/run/sshd && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+
+# Set Python alias
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
+

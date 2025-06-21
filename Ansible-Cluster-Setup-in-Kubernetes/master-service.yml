@@ -1,0 +1,14 @@
+# master-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: master-service
+spec:
+  selector:
+    role: master
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 22
+  type: ClusterIP
+

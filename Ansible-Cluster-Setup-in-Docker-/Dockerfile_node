@@ -1,0 +1,18 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && apt install -y openssh-server sudo python3 curl && \
+    ln -s /usr/bin/python3 /usr/bin/python
+
+RUN useradd -m ansible && echo "ansible:ansible" | chpasswd && adduser ansible sudo && \
+    echo "ansible ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+RUN mkdir /var/run/sshd && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
+    echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
+

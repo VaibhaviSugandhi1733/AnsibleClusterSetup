@@ -1,0 +1,21 @@
+# master-deploy.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ansible-master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: master
+  template:
+    metadata:
+      labels:
+        role: master
+    spec:
+      containers:
+      - name: master
+        image: vaibhavisugandhi1733/ansible-master-img:latest
+        ports:
+        - containerPort: 22
+
