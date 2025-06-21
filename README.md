@@ -1,18 +1,20 @@
+
 # Ansible Cluster Setup using Docker & Kubernetes
 
 This project demonstrates how to manually set up an Ansible cluster for automation testing using both Docker containers and Kubernetes Pods — **without relying on pre-built images**.
 
 ## 📦 Project Structure
 
+```
 
 AnsibleClusterSetup/
 ├── Ansible-Cluster-Setup-in-Docker/
-│ └── (Dockerfiles, setup scripts, SSH config, inventory, etc.)
+│   └── (Dockerfiles, setup scripts, SSH config, inventory, etc.)
 ├── Ansible-Cluster-Setup-in-Kubernetes/
-│ └── (K8s manifests, headless services, SSH, node setup, etc.)
+│   └── (K8s manifests, headless services, SSH, node setup, etc.)
 └── README.md
 
-
+````
 
 ## ⚙️ What’s Inside
 
@@ -34,37 +36,48 @@ AnsibleClusterSetup/
 ## 🚀 How to Use
 
 ### Clone the Repo
-'''bash
+```bash
 git clone https://github.com/VaibhaviSugandhi1733/AnsibleClusterSetup.git
 cd AnsibleClusterSetup
+````
 
-Docker Setup
+### Docker Setup
 
+```bash
 cd Ansible-Cluster-Setup-in-Docker
 # Follow provided steps in README or scripts to build images and run containers
+```
 
-Kubernetes Setup
+### Kubernetes Setup
 
+```bash
 cd Ansible-Cluster-Setup-in-Kubernetes
 # Apply YAML files and configure SSH manually for Ansible control
+```
 
+---
 
-🛠️ Tools Used
+## 🛠️ Tools Used
 
-    Ansible (automation)
+* **Ansible** (automation)
+* **Docker** (container platform)
+* **Kubernetes** (container orchestration)
+* **Ubuntu / CentOS** base images (built from scratch)
 
-    Docker (container platform)
+---
 
-    Kubernetes (container orchestration)
+## 🎯 Goals
 
-    Ubuntu / CentOS base images (built from scratch)
+* Learn Ansible internals by manually setting up clusters
+* Avoid automation shortcuts like prebuilt images or Helm charts
+* Practice real-world SSH, YAML, and networking setups
 
+---
 
-🎯 Goals
+## 📌 Author
 
-    Learn Ansible internals by manually setting up clusters
+**Vaibhavi Sugandhi**
+[GitHub Profile](https://github.com/VaibhaviSugandhi1733)
 
-    Avoid automation shortcuts like prebuilt images or Helm charts
-
-    Practice real-world SSH, YAML, and networking setups
+---
 
